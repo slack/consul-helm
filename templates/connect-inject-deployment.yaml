@@ -84,4 +84,7 @@ spec:
           secret:
             secretName: {{ .Values.connectInject.certs.secretName }}
 {{- end }}
+{{- if .Values.global.rbac }}
+      serviceAccountName: "{{ .Values.connectInject.serviceAccountName }}"
+{{- end }}
 {{- end }}

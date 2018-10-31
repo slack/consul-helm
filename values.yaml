@@ -29,6 +29,10 @@ global:
   # currently: https://github.com/hashicorp/consul/issues/1858
   datacenter: dc1
 
+  # rbac enables or disables rbac. Setting this to true will configure
+  # a service account and cluster role binding if connectInject is also enabled
+  rbac: false
+
 server:
   enabled: "-"
   image: null
@@ -168,6 +172,7 @@ connectInject:
   enabled: false
   image: null # image for consul-k8s that contains the injector
   default: false # true will inject by default, otherwise requires annotation
+  serviceAccountName: "consul-injector" # service account to use for RBAC-enabled clusters
 
   # imageConsul and imageEnvoy can be set to Docker images for Consul and
   # Envoy, respectively. If the Consul image is not specified, the global
